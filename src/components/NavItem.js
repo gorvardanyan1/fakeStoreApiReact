@@ -1,8 +1,8 @@
 import React from 'react'
 
-const NavItem = ({ title }) => {
+const NavItem = ({ title, handleCategory }) => {
     return (
-        <li className='navItem'>{title}</li>
+        <li className='navItem'><h3 onClick={(e) => handleCategory(title)}>{title}</h3></li>
     )
 }
 
