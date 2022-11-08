@@ -12,15 +12,14 @@ function reducer(state, action) {
             return { ...state, max: action.payload }
 
         default:
-            break;
+            return state
     }
 
-    return state
 }
 function Container() {
     const [value, dispatch] = useReducer(reducer, {
         min: 0,
-        max: 100000
+        max: 2000
     })
     const [categories, setCategories] = useState("")
     const products = useFetch('https://fakestoreapi.com/products', categories, value)
@@ -29,17 +28,17 @@ function Container() {
 
     // handler
     function handleCategory(category) {
-        console.log(category);
         setCategories("/category/" + category)
     }
     function handleFilter(type, payload) {
         dispatch({
             type, payload
         })
-        // setProducts(products.filter(elem => elem.price > value.min && elem.price < value.max))
+
     }
-    // console.log(products);
-    // console.log(value);
+
+    // minMax(products)
+
     return (
 
         <div className='container'>

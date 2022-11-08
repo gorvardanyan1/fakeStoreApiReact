@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react'
 
-const useFetch = (url, attention, value) => {
+const useFetch = (url, param, value) => {
     const [state, setState] = useState([])
-    url = url + attention
+    url = url + param
     useEffect(function () {
-        fetch(url)
-            .then(resp => resp.json())
-            .then(response => setState(() => response.filter(elem => elem.price > value.min && elem.price < value.max)))
+        const timeId = setTimeout(() => {
+            fetch(url)
+                .then(resp => resp.json())
+                .then(response => setState(() => response.filter(elem => elem.price > value.min && elem.price < value.max)))
+        }, 1000);
+        return () => clearTimeout(timeId)
+
     }, [url, value])
-    // setState(() => state.filter(elem => elem.price > value.min && elem.price < value.max))
+
     return state
 }
 
