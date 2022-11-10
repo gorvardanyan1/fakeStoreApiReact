@@ -1,13 +1,15 @@
 import React from 'react'
 
 const ProductItem = ({ product }) => {
+    const description = product.description.split(" ")
+    const title = product.title.split(" ")
     return (
         <div className='productItem'>
-            {/* <img src={product.image} alt="productImg" /> */}
+            
             <div style={{ backgroundImage: `url(${product.image})` }}></div>
-            <h3>{product.title}</h3>
+            <h3>{title.slice(0,5).join(" ")}</h3>
             <h4>{product.price}$</h4>
-            <h6>{product.description}</h6>
+            <h6>{description.slice(0,15).join(" ")}...</h6>
             <button>SEE More</button>
         </div>
     )

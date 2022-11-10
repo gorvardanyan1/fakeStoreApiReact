@@ -10,7 +10,7 @@ const FilterBar = ({ handleFilter, inputValue }) => {
             {openClose &&
                 <FilterDiv handleFilter={handleFilter} inputValue={inputValue} />
             }
-        </div>
+        </div >
     )
 }
 

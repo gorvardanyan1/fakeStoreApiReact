@@ -10,7 +10,6 @@ function reducer(state, action) {
             return { ...state, min: action.payload }
         case 'max':
             return { ...state, max: action.payload }
-
         default:
             return state
     }
@@ -21,23 +20,20 @@ function Container() {
         min: 0,
         max: 2000
     })
-    const [categories, setCategories] = useState("")
-    const products = useFetch('https://fakestoreapi.com/products', categories, value)
-
-
+    const [categoriesName, setCategoriesName] = useState("")
+    const products = useFetch('https://fakestoreapi.com/products', categoriesName, value)
 
     // handler
     function handleCategory(category) {
-        setCategories("/category/" + category)
+        setCategoriesName(() => "/category/" + category)
     }
     function handleFilter(type, payload) {
         dispatch({
-            type, payload
+            type,
+            payload
         })
 
     }
-
-    // minMax(products)
 
     return (
 
@@ -48,5 +44,7 @@ function Container() {
         </div>
     )
 }
+
+
 
 export default Container

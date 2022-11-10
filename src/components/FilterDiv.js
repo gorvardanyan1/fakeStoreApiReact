@@ -1,7 +1,7 @@
 import React from 'react'
 
-const FilterDiv = ({ handleFilter, inputValue }) => {
-    
+const FilterDiv = ({ handleFilter, inputValue, children }) => {
+
     return (
         <div>
             <label htmlFor="min" >Min</label> <input type="range" name="priceMin" id='min' max="2000" onChange={e => handleFilter('min', e.target.value)} value={inputValue.min} />
